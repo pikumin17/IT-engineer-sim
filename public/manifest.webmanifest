@@ -1,0 +1,16 @@
+{
+  "name": "IT Engineer Sim",
+  "short_name": "エンジニアSim",
+  "description": "クラウドエンジニアの仕事を体験しながらAWSを学べるゲーム",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#e9eff5",
+  "theme_color": "#22305c",
+  "lang": "ja",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml" }
+  ]
+}

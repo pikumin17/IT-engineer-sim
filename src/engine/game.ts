@@ -417,6 +417,8 @@ export function submitEstimate(s0: GameState, taskId: string): { state: GameStat
   t.estimateTries += 1;
   const ok = e.monthlyYen <= c.req.budgetYen;
   if (ok) t.stage = 'procedure';
+  // 予算オーバーなら、お客さんが予算を教えてくれる
+  else c.given = [...new Set([...(c.given ?? []), 'budgetYen' as ReqKey])];
   return { state: s, ok, monthly: e.monthlyYen, budget: c.req.budgetYen };
 }
 
@@ -480,6 +482,7 @@ export function launch(s0: GameState, taskId: string): GameState {
   let xp = 40 + e.stars * 50 + (e.works ? 20 : 0);
   xp -= t.hints * 10;
   xp -= Math.max(0, t.procedureTries - 1) * 5;
+  xp -= Math.max(0, t.estimateTries - 1) * 10;
   if (hq.missed.length === 0 && hq.wasted === 0 && !c.given) xp += 30;
   const satisfaction = Math.max(5, Math.min(100, Math.round(e.works ? 30 + e.total * 0.7 - hq.missed.length * 3 : 15)));
   c.satisfaction = satisfaction;
